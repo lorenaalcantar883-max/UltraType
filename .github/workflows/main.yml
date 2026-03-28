@@ -15,6 +15,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Generate Gradle Wrapper
+        # هذا السطر هو الذي سيضيف الملفات الناقصة التي سألت عنها آلياً
         run: gradle wrapper --gradle-version 8.5
 
       - name: Make Gradlew Executable
