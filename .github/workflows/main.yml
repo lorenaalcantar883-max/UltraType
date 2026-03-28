@@ -20,7 +20,7 @@ jobs:
           gradle-version: 8.5
 
       - name: Build with Gradle
-        # سنستخدم 'gradle' مباشرة لأن مشروعك لا يحتوي على 'gradlew'
+        # سنستخدم أمر 'gradle' العام لأنه يحل مشكلة الملفات الناقصة في مشروعك
         run: gradle assembleDebug --stacktrace
 
       - name: Upload APK
