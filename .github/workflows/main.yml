@@ -14,15 +14,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Generate Gradle Wrapper
-        # هذا السطر هو الذي سيضيف الملفات الناقصة التي سألت عنها آلياً
-        run: gradle wrapper --gradle-version 8.5
-
-      - name: Make Gradlew Executable
-        run: chmod +x gradlew
+      # بديل آمن ومستقر لسطر gradle wrapper
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.5
 
       - name: Build with Gradle
-        run: ./gradlew assembleDebug --stacktrace
+        # بما أن gradlew قد لا يكون موجوداً، سنستخدم gradle مباشرة
+        run: gradle assembleDebug --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
